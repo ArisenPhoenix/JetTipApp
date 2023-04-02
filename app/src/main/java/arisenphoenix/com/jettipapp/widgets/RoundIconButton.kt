@@ -1,0 +1,43 @@
+package arisenphoenix.com.jettipapp.widgets
+
+import android.util.Log
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Remove
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+
+val IconsButtonSizeModifier = Modifier.size(40.dp)
+@Preview
+@Composable
+fun RoundIconButton(
+    modifier: Modifier = Modifier,
+    imageVector: ImageVector = Icons.Default.Add,
+    onClick: () -> Unit = { Log.d("ROUND ICON BUTTON", "IS BEING CLICKED")},
+    tint: Color = Color.Black.copy(alpha = 0.8f),
+    backgroundColor: Color = MaterialTheme.colors.background,
+    elevation: Dp = 4.dp
+
+) {
+    Card(modifier = modifier.padding(all = 4.dp).clickable { onClick.invoke() }.then(IconsButtonSizeModifier),
+    shape = CircleShape,
+        backgroundColor = backgroundColor,
+        elevation = elevation,
+        ) {
+        Icon(imageVector = imageVector, contentDescription = "Plus or minus icon", tint = tint)
+    }
+
+
+}
